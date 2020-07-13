@@ -24,9 +24,9 @@ import com.twilio.type.PhoneNumber;
 
 public class sendSms extends HttpServlet {
 
-	public static final String ACCOUNT_SID = "AC76ce71854ed83ba9d29148b1790e1575";
-	public static final String AUTH_TOKEN = "20662e2dd1a5756322a44bb784c04751";
-	public static final String twilio_number = "+12898053336";
+	public static final String ACCOUNT_SID = "add your account SID";
+	public static final String AUTH_TOKEN = " add your Authroizeation_token";
+	public static final String twilio_number = "purchased twilio phone number";
 	static ResourceSet<Message> messagesRecord;
 	public static Message message;
 	public static String send_to;
@@ -49,6 +49,7 @@ public class sendSms extends HttpServlet {
 		return true;
 	}
 	
+	// capital first letter in the name from the user input 
 	public static boolean check_name() {
 		try {
 			Cname = Cname.substring(0, 1).toUpperCase() + Cname.substring(1);
@@ -64,16 +65,14 @@ public class sendSms extends HttpServlet {
 		messagesRecord = Message.reader().read();
 		
 		String sms = String
-				.format("Hi %s\nThis is Truscott Animal Hospital, we are so glad we were able to assist you, "
-						+ "your opinion matter to us, we highly appreciate if you can give us your feedback"
-						+ " and rate us at https://truscottanimalhospital.page.link/review", Cname);
+				.format("add your massage here", Cname);
 		return sms;
 	}
 
 	public static boolean createSms() {
 		try {
 			
-			message = Message.creator(new PhoneNumber("+1" + send_to), "MGdbcea178f9f554349ceb6c97469ecf50", sms()).setProvideFeedback(true).create();
+			message = Message.creator(new PhoneNumber("+1" + send_to), " your Msg sid ", sms()).setProvideFeedback(true).create();
 			
 			//System.out.print(service.getStatusCallback());
 		} catch (ApiException e) {
